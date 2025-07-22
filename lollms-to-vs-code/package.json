@@ -1,0 +1,166 @@
+{
+  "name": "lollms-vs-code",
+  "displayName": "Lollms VS Code",
+  "description": "Manages file context and interacts with an AI for code generation and analysis.",
+  "version": "5.0.0",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Developer Tools",
+    "AI",
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:lollms-sidebar"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Lollms",
+      "properties": {
+        "lollms.host": {
+          "type": "string",
+          "default": "http://localhost:9600",
+          "description": "The base URL of your lollms-compatible server."
+        },
+        "lollms.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your API Key, if required by the server."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "lollms-activitybar",
+          "title": "Lollms",
+          "icon": "assets/check.svg"
+        }
+      ]
+    },
+    "views": {
+      "lollms-activitybar": [
+        {
+          "id": "lollms-sidebar",
+          "name": "Lollms Context",
+          "type": "tree"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "lollms_to_vs_code.openPanel",
+        "title": "Lollms: Open Control Panel"
+      },
+      {
+        "command": "lollms_to_vs_code.openSettings",
+        "title": "Lollms: Open Settings",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "lollms_to_vs_code.cycleContextState",
+        "title": "Lollms: Cycle Context State"
+      },
+      {
+        "command": "lollms_to_vs_code.setContextFull",
+        "title": "Include Full Content"
+      },
+      {
+        "command": "lollms_to_vs_code.setContextSignatures",
+        "title": "Include Signatures Only"
+      },
+      {
+        "command": "lollms_to_vs_code.setContextTreeOnly",
+        "title": "Include in Tree Only (Default)"
+      },
+      {
+        "command": "lollms_to_vs_code.setContextExcluded",
+        "title": "Exclude Completely (Hide)"
+      },
+      {
+        "command": "lollms_to_vs_code.generateContext",
+        "title": "Lollms: Generate/Refresh Live Context",
+        "icon": "$(rocket)"
+      }
+    ],
+    "menus": {
+      "menubar": [
+        {
+            "command": "lollms_to_vs_code.generateContext",
+            "group": "lollms@1"
+        },
+        {
+            "command": "lollms_to_vs_code.openPanel",
+            "group": "lollms@2"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "lollms_to_vs_code.generateContext",
+          "when": "view == lollms-sidebar",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "lollms_to_vs_code.setContextFull",
+          "when": "view == lollms-sidebar",
+          "group": "inline@1"
+        },
+        {
+          "command": "lollms_to_vs_code.setContextSignatures",
+          "when": "view == lollms-sidebar",
+          "group": "inline@2"
+        },
+        {
+          "command": "lollms_to_vs_code.setContextTreeOnly",
+          "when": "view == lollms-sidebar",
+          "group": "inline@3"
+        },
+        {
+          "command": "lollms_to_vs_code.setContextExcluded",
+          "when": "view == lollms-sidebar",
+          "group": "inline@4"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "lollms_to_vs_code.setContextFull",
+          "group": "lollms@1"
+        },
+        {
+          "command": "lollms_to_vs_code.setContextSignatures",
+          "group": "lollms@2"
+        },
+        {
+          "command": "lollms_to_vs_code.setContextTreeOnly",
+          "group": "lollms@3"
+        },
+        {
+          "command": "lollms_to_vs_code.setContextExcluded",
+          "group": "lollms@4"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@vscode/webview-ui-toolkit": "^1.2.2"
+  }
+}

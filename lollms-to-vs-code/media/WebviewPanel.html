@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <header>
+        <h1>Lollms Control Panel</h1>
+        <vscode-button id="settings-btn" appearance="icon" title="Lollms Settings">
+            <span class="codicon codicon-gear"></span>
+        </vscode-button>
+    </header>
+    <main>
+        <div class="column-container">
+            <!-- LEFT COLUMN: Instructions -->
+            <div class="column">
+                <div class="section">
+                    <h3><span class="codicon codicon-lightbulb"></span> Instructions</h3>
+                    <vscode-text-area id="custom-prompt-textarea" placeholder="Enter custom instructions for the AI... This will be combined with the Live Context when you generate it." resize="vertical"></vscode-text-area>
+                </div>
+            </div>
+
+            <!-- CENTER COLUMN: Discussion -->
+            <div class="column column-main">
+                <div id="chat-messages-container">
+                    <div class="welcome-message">
+                        <span class="codicon codicon-rocket" style="font-size: 2em;"></span>
+                        <h2>Welcome to Lollms</h2>
+                        <p>1. Use the sidebar to build your file context.</p>
+                        <p>2. Click the <span class="codicon codicon-rocket"></span> 'Generate' button in the menu or sidebar.</p>
+                        <p>3. Start your discussion here!</p>
+                    </div>
+                </div>
+                <form id="chat-form">
+                    <vscode-text-area id="chat-input" placeholder="Type your message..." resize="vertical" disabled></vscode-text-area>
+                    <vscode-button id="chat-send-btn" type="submit" appearance="primary" disabled><span class="codicon codicon-send"></span></vscode-button>
+                </form>
+            </div>
+
+            <!-- RIGHT COLUMN: Live Context -->
+            <div class="column">
+                <div class="section">
+                    <div class="section-header">
+                        <h3><span class="codicon codicon-files"></span> Live Context</h3>
+                        <vscode-button id="refresh-context-btn" appearance="icon" title="Refresh Context from Sidebar">
+                            <span class="codicon codicon-refresh"></span>
+                        </vscode-button>
+                    </div>
+                    <div id="live-context-view" class="readonly-panel">
+                        <div class="welcome-message">
+                            <p>Click the <span class="codicon codicon-rocket"></span> button to generate the context.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,217 @@
+body, html, main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: var(--vscode-font-family);
+    font-size: var(--vscode-font-size);
+    color: var(--vscode-editor-foreground);
+    background-color: var(--vscode-editor-background);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--vscode-editorWidget-border);
+    flex-shrink: 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+main {
+    flex-grow: 1;
+    min-height: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.column-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.5fr;
+    gap: 1rem;
+    height: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+}
+
+.column-main {
+    border-left: 1px solid var(--vscode-editorWidget-border);
+    border-right: 1px solid var(--vscode-editorWidget-border);
+    padding: 0 1rem;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 4px;
+    background-color: var(--vscode-sideBar-background);
+    border: 1px solid var(--vscode-sideBar-border);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.section h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+vscode-text-area, .readonly-panel {
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.readonly-panel {
+    overflow-y: auto;
+    font-family: var(--vscode-editor-font-family);
+    background-color: var(--vscode-input-background);
+    padding: 0.5rem;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.readonly-panel h2 {
+    font-size: 1.1em;
+    border-bottom: 1px solid var(--vscode-editorWidget-border);
+    padding-bottom: 0.3em;
+    margin-top: 0;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#chat-messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+.welcome-message {
+    text-align: center;
+    color: var(--vscode-descriptionForeground);
+    margin: auto;
+}
+
+.chat-message {
+    display: flex;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.chat-message .icon {
+    font-size: 1.5em;
+    color: var(--vscode-terminal-ansiBrightBlue);
+}
+
+.chat-bubble {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    word-break: break-word;
+}
+.chat-bubble p { margin: 0 0 0.5em 0; }
+.chat-bubble p:last-child { margin-bottom: 0; }
+
+
+.chat-message.user {
+    flex-direction: row-reverse;
+}
+
+.chat-message.user .chat-bubble {
+    background-color: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+}
+
+.chat-message.ai {
+    align-self: flex-start;
+}
+
+.chat-message.ai .chat-bubble {
+    background-color: var(--vscode-input-background);
+}
+
+#chat-form {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--vscode-editorWidget-border);
+}
+
+pre {
+    padding: 1em;
+    margin: 0.5em 0;
+    white-space: pre-wrap;
+    background-color: var(--vscode-textCodeBlock-background);
+    border-radius: 4px;
+    position: relative;
+}
+
+.copy-code-btn {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    cursor: pointer;
+    background-color: var(--vscode-button-secondaryBackground);
+    border: none;
+    color: var(--vscode-button-secondaryForeground);
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+pre:hover .copy-code-btn {
+    opacity: 1;
+}
+
+.copy-code-btn:hover {
+    background-color: var(--vscode-button-secondaryHoverBackground);
+}
+
+.context-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2px 0;
+}
+
+.context-item .remove-btn {
+    cursor: pointer;
+    color: var(--vscode-descriptionForeground);
+}
+
+.context-item .remove-btn:hover {
+    color: var(--vscode-errorForeground);
+}
+
+.context-file-content {
+    border: 1px solid var(--vscode-input-background);
+    background-color: var(--vscode-editor-background);
+    padding: 0.5rem;
+    margin: 0.5rem 0 1rem 1rem;
+    border-radius: 4px;
+}
